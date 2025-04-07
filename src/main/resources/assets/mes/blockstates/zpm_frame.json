@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "mes:block/zpm_frame"
+    }
+  }
+}
