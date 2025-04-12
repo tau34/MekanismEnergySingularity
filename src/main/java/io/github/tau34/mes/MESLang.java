@@ -4,7 +4,8 @@ import mekanism.api.text.ILangEntry;
 import net.minecraft.Util;
 
 public enum MESLang implements ILangEntry {
-    MES("constants", "mod_name");
+    MES("constants", "mod_name"),
+    ZPM("zpm", "zpm");
 
     private final String key;
 

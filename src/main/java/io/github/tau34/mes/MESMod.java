@@ -1,15 +1,19 @@
 package io.github.tau34.mes;
 
+import com.jerry.generator_extras.common.ExtraGenLang;
+import com.jerry.mekanism_extras.common.ExtraLang;
+import com.jerry.mekanism_extras.common.command.ExtraBuilders;
+import com.jerry.mekanism_extras.integration.Addons;
 import com.mojang.logging.LogUtils;
 import io.github.tau34.mes.client.gui.GuiZPM;
+import io.github.tau34.mes.common.multiblock.MESBuilders;
 import io.github.tau34.mes.common.multiblock.cache.ZPMCache;
 import io.github.tau34.mes.common.multiblock.data.ZPMMultiblockData;
 import io.github.tau34.mes.common.multiblock.validator.ZPMValidator;
-import io.github.tau34.mes.common.register.MESBlocks;
-import io.github.tau34.mes.common.register.MESContainerTypes;
-import io.github.tau34.mes.common.register.MESCreativeTabs;
-import io.github.tau34.mes.common.register.MESTiles;
+import io.github.tau34.mes.common.register.*;
 import mekanism.client.ClientRegistrationUtil;
+import mekanism.common.command.CommandMek;
+import mekanism.common.command.builders.BuildCommand;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.common.lib.multiblock.MultiblockCache;
 import mekanism.common.lib.multiblock.MultiblockManager;
@@ -21,6 +25,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -46,8 +51,10 @@ public class MESMod {
         MESContainerTypes.REGISTER.register(modEventBus);
         MESCreativeTabs.REGISTER.register(modEventBus);
         MESTiles.REGISTER.register(modEventBus);
+        MESGases.REGISTER.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.addListener(this::registerCommands);
     }
 
     public static ResourceLocation rl(String path){
@@ -56,6 +63,10 @@ public class MESMod {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info("HELLO FROM COMMON SETUP");
+    }
+
+    private void registerCommands(RegisterCommandsEvent event) {
+        BuildCommand.register("zpm", MESLang.ZPM, new MESBuilders.ZPMBuilder());
     }
 
     @SubscribeEvent

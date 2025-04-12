@@ -1,3 +1,4 @@
 {
-  "label.air_percent": "Air: %s%%"
+  "label.air_percent": "Air: %s%%",
+  "gas.mes.quantum_stabilizer": "Quantum Stabilizer"
 }

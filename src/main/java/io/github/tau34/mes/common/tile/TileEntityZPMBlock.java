@@ -27,4 +27,10 @@ public class TileEntityZPMBlock extends TileEntityMultiblock<ZPMMultiblockData> 
     public MultiblockManager<ZPMMultiblockData> getManager() {
         return MESMod.zpmManager;
     }
+
+    public void setZPMActive(boolean b) {
+        if (this.getMultiblock().isFormed()) {
+            this.getMultiblock().setActive(b);
+        }
+    }
 }

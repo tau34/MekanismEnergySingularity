@@ -32,8 +32,10 @@ public class TileEntityVoidResonanceEngine extends TileEntityZPMBlock {
     protected boolean onUpdateServer(ZPMMultiblockData multiblock) {
         for (Direction d : EnumUtils.DIRECTIONS) {
             BlockEntity adj = WorldUtils.getTileEntity(this.getLevel(), this.getBlockPos().relative(d));
-            if (adj instanceof TileEntityAirExtractor) {
-                multiblock.removeAir();
+            if (adj instanceof TileEntityAirExtractor extractor) {
+                if (extractor.getActive()) {
+                    multiblock.removeAir();
+                }
             }
         }
         return super.onUpdateServer(multiblock);

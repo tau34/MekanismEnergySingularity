@@ -2,16 +2,18 @@ package io.github.tau34.mes.client.gui;
 
 import com.mojang.logging.LogUtils;
 import io.github.tau34.mes.client.element.AirGauge;
+import io.github.tau34.mes.common.network.MESPacketGuiInteract;
 import io.github.tau34.mes.common.tile.TileEntityZPMBlock;
-import mekanism.api.chemical.ChemicalTankBuilder;
-import mekanism.api.chemical.gas.IGasTank;
 import mekanism.api.math.FloatingLong;
 import mekanism.client.gui.GuiMekanismTile;
+import mekanism.client.gui.element.button.TranslationButton;
 import mekanism.client.gui.element.gauge.GaugeType;
 import mekanism.client.gui.element.gauge.GuiEnergyGauge;
 import mekanism.client.gui.element.gauge.GuiGasGauge;
 import mekanism.client.gui.element.gauge.GuiTankGauge;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
+import mekanism.generators.common.GeneratorsLang;
+import mekanism.generators.common.MekanismGenerators;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 import org.jetbrains.annotations.Nullable;
@@ -34,12 +36,13 @@ public class GuiZPM extends GuiMekanismTile<TileEntityZPMBlock, MekanismTileCont
                 return GuiZPM.this.tile.getMultiblock().getMaxEnergy();
             }
         }, GaugeType.MEDIUM, this, 7, 16, 34, 56));
-        this.addRenderableWidget(new AirGauge(this, 107, 16));
+        this.addRenderableWidget(new GuiGasGauge(() -> this.tile.getMultiblock().stabilizerTank,
+                () -> this.tile.getMultiblock().getGasTanks(null), GaugeType.STANDARD, this, 45, 16));
+        this.addRenderableWidget(new TranslationButton(this, 76, 20, 50, 16, GeneratorsLang.FISSION_SCRAM, () -> MekanismGenerators.packetHandler().sendToServer(new MESPacketGuiInteract(MESPacketGuiInteract.MESGuiInteraction.ZPM_ACTIVATE, this.tile, 0D))));
+        this.addRenderableWidget(new AirGauge(this, 133, 16));
     }
 
     public int getAir() {
-        int air = this.tile.getMultiblock().getAir();
-        LogUtils.getLogger().info(String.valueOf(air));
-        return air;
+        return this.tile.getMultiblock().getAir();
     }
 }

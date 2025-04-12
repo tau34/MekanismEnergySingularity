@@ -20,7 +20,14 @@ public class ZPMValidator extends CuboidStructureValidator<ZPMMultiblockData> {
     @Override
     protected FormationProtocol.CasingType getCasingType(BlockState state) {
         Block block = state.getBlock();
-        return BlockType.is(block, MESBlockTypes.ZPM_FRAME) ? FormationProtocol.CasingType.FRAME :
-                BlockType.is(block, MESBlockTypes.ZPM_PORT) ? FormationProtocol.CasingType.VALVE : FormationProtocol.CasingType.INVALID;
+        if (BlockType.is(block, MESBlockTypes.ZPM_FRAME)) {
+            return FormationProtocol.CasingType.FRAME;
+        } else if (BlockType.is(block, MESBlockTypes.ZPM_PORT)) {
+            return FormationProtocol.CasingType.VALVE;
+        } else {
+            if (BlockType.is(block, MESBlockTypes.VOID_RESONANCE_ENGINE))
+                return FormationProtocol.CasingType.OTHER;
+            return FormationProtocol.CasingType.INVALID;
+        }
     }
 }

@@ -3,7 +3,11 @@ package io.github.tau34.mes.common.tile;
 import io.github.tau34.mes.common.multiblock.data.ZPMMultiblockData;
 import io.github.tau34.mes.common.register.MESBlocks;
 import mekanism.api.IContentsListener;
+import mekanism.api.chemical.gas.Gas;
+import mekanism.api.chemical.gas.GasStack;
+import mekanism.api.chemical.gas.IGasTank;
 import mekanism.api.text.EnumColor;
+import mekanism.common.capabilities.holder.chemical.IChemicalTankHolder;
 import mekanism.common.capabilities.holder.energy.IEnergyContainerHolder;
 import mekanism.common.integration.computer.annotation.ComputerMethod;
 import mekanism.common.lib.multiblock.IMultiblockEjector;
@@ -35,13 +39,18 @@ public class TileEntityZPMPort extends TileEntityZPMBlock implements IMultiblock
     }
 
     @Override
+    public @Nullable IChemicalTankHolder<Gas, GasStack, IGasTank> getInitialGasTanks(IContentsListener listener) {
+        return side -> this.getMultiblock().getGasTanks(side);
+    }
+
+    @Override
     public void setEjectSides(Set<Direction> sides) {
         outputDirections = sides;
     }
 
     @Override
     public boolean persists(SubstanceType type) {
-        return type != SubstanceType.ENERGY && super.persists(type);
+        return type != SubstanceType.ENERGY && type != SubstanceType.GAS && super.persists(type);
     }
 
     @Override

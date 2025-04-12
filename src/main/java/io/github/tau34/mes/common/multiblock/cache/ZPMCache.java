@@ -5,8 +5,8 @@ import mekanism.common.lib.multiblock.MultiblockCache;
 import net.minecraft.nbt.CompoundTag;
 
 public class ZPMCache extends MultiblockCache<ZPMMultiblockData> {
-    private boolean isActive;
-    private int air;
+    private boolean isActive = false;
+    private int air = 400;
 
     @Override
     public void merge(MultiblockCache<ZPMMultiblockData> mergeCache, RejectContents rejectContents) {
@@ -20,6 +20,13 @@ public class ZPMCache extends MultiblockCache<ZPMMultiblockData> {
         super.apply(data);
         data.setActive(isActive);
         data.setAir(air);
+    }
+
+    @Override
+    public void sync(ZPMMultiblockData data) {
+        super.sync(data);
+        this.isActive = data.isActive();
+        this.air = data.getAir();
     }
 
     @Override
