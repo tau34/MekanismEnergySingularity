@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mes:block/neutron_condenser"
+    },
+    "facing=south": {
+      "model": "mes:block/neutron_condenser",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "mes:block/neutron_condenser",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "mes:block/neutron_condenser",
+      "y": -90
+    }
+  }
+}

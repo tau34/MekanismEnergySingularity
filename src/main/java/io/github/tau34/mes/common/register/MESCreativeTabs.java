@@ -15,5 +15,6 @@ public class MESCreativeTabs {
             builder -> builder.withTabsBefore(MekanismCreativeTabs.MEKANISM.key())
                     .displayItems((d, o) -> {
                         CreativeTabDeferredRegister.addToDisplay(MESBlocks.REGISTER, o);
+                        CreativeTabDeferredRegister.addToDisplay(MESItems.REGISTER, o);
                     }));
 }

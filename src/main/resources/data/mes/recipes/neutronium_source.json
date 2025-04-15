@@ -1,0 +1,12 @@
+{
+  "type": "mekanism:oxidizing",
+  "input": {
+    "ingredient": {
+      "item": "mekanismscience:pellet_neutron_source"
+    }
+  },
+  "output": {
+    "amount": 1000,
+    "gas": "mes:neutron_source"
+  }
+}

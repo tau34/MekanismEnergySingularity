@@ -1,4 +1,4 @@
-package io.github.tau34.mes.common.tile;
+package io.github.tau34.mes.common.tile.zpm;
 
 import io.github.tau34.mes.common.multiblock.data.ZPMMultiblockData;
 import io.github.tau34.mes.common.register.MESBlocks;
@@ -15,8 +15,6 @@ import mekanism.common.util.NBTUtils;
 import mekanism.generators.common.GeneratorsLang;
 import mekanism.generators.common.base.IReactorLogic;
 import mekanism.generators.common.base.IReactorLogicMode;
-import mekanism.generators.common.content.fission.FissionReactorMultiblockData;
-import mekanism.generators.common.tile.fission.TileEntityFissionReactorLogicAdapter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -70,10 +68,16 @@ public class TileEntityZPMLogicAdapter extends TileEntityZPMBlock implements IRe
                             return RedstoneStatus.POWERED;
                         }
                         break;
+                    case READY:
+                        if (multiblock.getAir() <= 0) {
+                            return RedstoneStatus.OUTPUTTING;
+                        }
+                        break;
                     case DEPLETED:
                         if (multiblock.stabilizerTank.getStored() < 2000) {
                             return RedstoneStatus.OUTPUTTING;
                         }
+                        break;
                 }
             }
         }
@@ -127,6 +131,7 @@ public class TileEntityZPMLogicAdapter extends TileEntityZPMBlock implements IRe
     public static enum ZPMLogic implements IReactorLogicMode<ZPMLogic>, IHasTranslationKey {
         DISABLED(GeneratorsLang.REACTOR_LOGIC_DISABLED, GeneratorsLang.DESCRIPTION_REACTOR_DISABLED, new ItemStack(Items.GUNPOWDER), EnumColor.DARK_GRAY),
         ACTIVATION(GeneratorsLang.REACTOR_LOGIC_ACTIVATION, GeneratorsLang.DESCRIPTION_REACTOR_ACTIVATION, new ItemStack(Items.FLINT_AND_STEEL), EnumColor.AQUA),
+        READY(GeneratorsLang.REACTOR_LOGIC_READY, GeneratorsLang.DESCRIPTION_REACTOR_READY, new ItemStack(Items.REDSTONE), EnumColor.AQUA),
         DEPLETED(GeneratorsLang.REACTOR_LOGIC_DEPLETED, GeneratorsLang.DESCRIPTION_REACTOR_DEPLETED, new ItemStack(Items.REDSTONE), EnumColor.RED);
 
         private static final ZPMLogic[] MODES = values();

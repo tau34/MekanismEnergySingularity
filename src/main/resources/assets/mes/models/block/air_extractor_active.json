@@ -1,0 +1,9 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "particle": "mes:block/air_extractor_side",
+    "top": "mes:block/air_extractor_top",
+    "bottom": "mes:block/air_extractor_top",
+    "side": "mes:block/air_extractor_side"
+  }
+}

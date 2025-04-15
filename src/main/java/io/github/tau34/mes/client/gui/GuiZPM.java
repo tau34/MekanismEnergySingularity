@@ -1,22 +1,19 @@
 package io.github.tau34.mes.client.gui;
 
-import com.mojang.logging.LogUtils;
 import io.github.tau34.mes.client.element.AirGauge;
 import io.github.tau34.mes.common.network.MESPacketGuiInteract;
-import io.github.tau34.mes.common.tile.TileEntityZPMBlock;
+import io.github.tau34.mes.common.tile.zpm.TileEntityZPMBlock;
 import mekanism.api.math.FloatingLong;
 import mekanism.client.gui.GuiMekanismTile;
 import mekanism.client.gui.element.button.TranslationButton;
 import mekanism.client.gui.element.gauge.GaugeType;
 import mekanism.client.gui.element.gauge.GuiEnergyGauge;
 import mekanism.client.gui.element.gauge.GuiGasGauge;
-import mekanism.client.gui.element.gauge.GuiTankGauge;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.generators.common.GeneratorsLang;
 import mekanism.generators.common.MekanismGenerators;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
-import org.jetbrains.annotations.Nullable;
 
 public class GuiZPM extends GuiMekanismTile<TileEntityZPMBlock, MekanismTileContainer<TileEntityZPMBlock>> {
     public GuiZPM(MekanismTileContainer<TileEntityZPMBlock> container, Inventory inv, Component title) {

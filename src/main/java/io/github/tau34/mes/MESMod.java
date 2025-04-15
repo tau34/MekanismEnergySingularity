@@ -5,11 +5,14 @@ import com.jerry.mekanism_extras.common.ExtraLang;
 import com.jerry.mekanism_extras.common.command.ExtraBuilders;
 import com.jerry.mekanism_extras.integration.Addons;
 import com.mojang.logging.LogUtils;
+import io.github.tau34.mes.client.gui.GuiNeutronCondenser;
 import io.github.tau34.mes.client.gui.GuiZPM;
+import io.github.tau34.mes.client.gui.GuiZPMLogicAdapter;
 import io.github.tau34.mes.common.multiblock.MESBuilders;
 import io.github.tau34.mes.common.multiblock.cache.ZPMCache;
 import io.github.tau34.mes.common.multiblock.data.ZPMMultiblockData;
 import io.github.tau34.mes.common.multiblock.validator.ZPMValidator;
+import io.github.tau34.mes.common.recipe.MESRecipeType;
 import io.github.tau34.mes.common.register.*;
 import mekanism.client.ClientRegistrationUtil;
 import mekanism.common.command.CommandMek;
@@ -47,11 +50,14 @@ public class MESMod {
     public MESMod() {
         //MMCConfig.registerConfig(ModLoadingContext.get());
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        MESItems.REGISTER.register(modEventBus);
         MESBlocks.REGISTER.register(modEventBus);
         MESContainerTypes.REGISTER.register(modEventBus);
         MESCreativeTabs.REGISTER.register(modEventBus);
         MESTiles.REGISTER.register(modEventBus);
         MESGases.REGISTER.register(modEventBus);
+        MESRecipeType.REGISTER.register(modEventBus);
+        MESRecipeSerializers.REGISTER.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.addListener(this::registerCommands);
@@ -86,6 +92,8 @@ public class MESMod {
         public static void registerContainers(RegisterEvent event) {
             event.register(Registries.MENU, helper -> {
                 ClientRegistrationUtil.registerScreen(MESContainerTypes.ZPM, GuiZPM::new);
+                ClientRegistrationUtil.registerScreen(MESContainerTypes.ZPM_LOGIC_ADAPTER, GuiZPMLogicAdapter::new);
+                ClientRegistrationUtil.registerScreen(MESContainerTypes.NEUTRON_CONDENSER, GuiNeutronCondenser::new);
             });
         }
     }

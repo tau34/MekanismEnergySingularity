@@ -1,0 +1,15 @@
+{
+  "type": "mekanism:chemical_infusing",
+  "leftInput": {
+    "amount": 1,
+    "gas": "mekanism:antimatter"
+  },
+  "output": {
+    "amount": 100,
+    "gas": "mes:quantum_stabilizer"
+  },
+  "rightInput": {
+    "amount": 1,
+    "gas": "mes:neutronium"
+  }
+}

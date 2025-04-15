@@ -2,7 +2,7 @@ package io.github.tau34.mes.common.multiblock.data;
 
 import com.mojang.logging.LogUtils;
 import io.github.tau34.mes.common.register.MESGases;
-import io.github.tau34.mes.common.tile.TileEntityZPMBlock;
+import io.github.tau34.mes.common.tile.zpm.TileEntityZPMBlock;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
 import mekanism.api.chemical.gas.IGasTank;
@@ -14,7 +14,6 @@ import mekanism.common.capabilities.energy.VariableCapacityEnergyContainer;
 import mekanism.common.inventory.container.sync.dynamic.ContainerSync;
 import mekanism.common.lib.multiblock.MultiblockData;
 import mekanism.common.network.to_client.PacketLightningRender;
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 

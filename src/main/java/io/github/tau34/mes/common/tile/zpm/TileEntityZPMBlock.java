@@ -1,4 +1,4 @@
-package io.github.tau34.mes.common.tile;
+package io.github.tau34.mes.common.tile.zpm;
 
 import io.github.tau34.mes.MESMod;
 import io.github.tau34.mes.common.multiblock.data.ZPMMultiblockData;

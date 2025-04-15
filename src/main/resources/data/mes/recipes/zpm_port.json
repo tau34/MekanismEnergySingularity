@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": {
+      "item": "mekanism_extras:absolute_control_circuit"
+    },
+    "Z": {
+      "item": "mes:zpm_frame"
+    }
+  },
+  "pattern": [
+    " C ",
+    "CZC",
+    " C "
+  ],
+  "result": {
+    "count": 2,
+    "item": "mes:zpm_port"
+  }
+}

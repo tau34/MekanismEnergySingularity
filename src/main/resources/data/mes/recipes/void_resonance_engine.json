@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": {
+      "item": "mes:quantum_casing"
+    },
+    "F": {
+      "item": "mekanism:fluorite_gem"
+    },
+    "P": {
+      "item": "mekanism:polonium_pellet"
+    }
+  },
+  "pattern": [
+    "FPF",
+    "PCP",
+    "FPF"
+  ],
+  "result": {
+    "count": 1,
+    "item": "mes:void_resonance_engine"
+  }
+}

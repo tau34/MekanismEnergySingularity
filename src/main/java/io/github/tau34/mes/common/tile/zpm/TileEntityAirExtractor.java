@@ -1,4 +1,4 @@
-package io.github.tau34.mes.common.tile;
+package io.github.tau34.mes.common.tile.zpm;
 
 import com.mojang.logging.LogUtils;
 import io.github.tau34.mes.common.register.MESBlocks;

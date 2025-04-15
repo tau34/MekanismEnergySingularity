@@ -1,11 +1,11 @@
 package io.github.tau34.mes.common.network;
 
-import io.github.tau34.mes.common.tile.TileEntityZPMBlock;
+import io.github.tau34.mes.common.tile.zpm.TileEntityZPMBlock;
+import io.github.tau34.mes.common.tile.zpm.TileEntityZPMLogicAdapter;
 import mekanism.api.functions.TriConsumer;
 import mekanism.common.network.IMekanismPacket;
 import mekanism.common.tile.base.TileEntityMekanism;
 import mekanism.common.util.WorldUtils;
-import mekanism.generators.common.network.to_server.PacketGeneratorsGuiInteract;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
@@ -62,7 +62,12 @@ public class MESPacketGuiInteract implements IMekanismPacket {
             if (tile instanceof TileEntityZPMBlock zpm) {
                 zpm.setZPMActive(Math.round(extra) == 1L);
             }
-        }));
+        })),
+        LOGIC_TYPE((tile, player, extra) -> {
+            if (tile instanceof TileEntityZPMLogicAdapter zpm) {
+                zpm.setLogicTypeFromPacket(TileEntityZPMLogicAdapter.ZPMLogic.byIndexStatic((int) Math.round(extra)));
+            }
+        });
         
         private final TriConsumer<TileEntityMekanism, Player, Double> consumerForTile;
 

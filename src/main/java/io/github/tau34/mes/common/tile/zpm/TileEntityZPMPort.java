@@ -1,4 +1,4 @@
-package io.github.tau34.mes.common.tile;
+package io.github.tau34.mes.common.tile.zpm;
 
 import io.github.tau34.mes.common.multiblock.data.ZPMMultiblockData;
 import io.github.tau34.mes.common.register.MESBlocks;
@@ -9,11 +9,9 @@ import mekanism.api.chemical.gas.IGasTank;
 import mekanism.api.text.EnumColor;
 import mekanism.common.capabilities.holder.chemical.IChemicalTankHolder;
 import mekanism.common.capabilities.holder.energy.IEnergyContainerHolder;
-import mekanism.common.integration.computer.annotation.ComputerMethod;
 import mekanism.common.lib.multiblock.IMultiblockEjector;
 import mekanism.common.tile.base.SubstanceType;
 import mekanism.common.util.CableUtils;
-import mekanism.common.util.ChemicalUtil;
 import mekanism.common.util.text.BooleanStateDisplay;
 import mekanism.generators.common.GeneratorsLang;
 import net.minecraft.core.BlockPos;

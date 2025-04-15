@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "mekanism_extras:alloy_radiance"
+    },
+    "A": {
+      "tag": "forge:pellets/antimatter"
+    },
+    "C": {
+      "item": "mekanism_extras:absolute_control_circuit"
+    },
+    "X": {
+      "item": "mekanism:steel_casing"
+    }
+  },
+  "pattern": [
+    "#C#",
+    "AXA",
+    "#C#"
+  ],
+  "result": {
+    "count": 1,
+    "item": "mes:neutron_condenser"
+  }
+}

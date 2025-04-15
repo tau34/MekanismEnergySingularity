@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
-      "model": "mes:block/zpm_frame"
+    "active=false": {
+      "model": "mes:block/zpm_port"
+    },
+    "active=true": {
+      "model": "mes:block/zpm_port_output"
     }
   }
 }

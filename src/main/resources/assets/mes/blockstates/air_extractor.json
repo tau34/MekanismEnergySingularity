@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "mes:block/air_extractor"
+    },
+    "active=true": {
+      "model": "mes:block/air_extractor_active"
+    }
+  }
+}

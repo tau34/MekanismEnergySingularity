@@ -1,0 +1,11 @@
+{
+  "type": "mes:neutron_condensing",
+  "input": {
+    "amount": 100,
+    "gas": "mes:neutron_source"
+  },
+  "output": {
+    "amount": 1,
+    "gas": "mes:neutronium"
+  }
+}

@@ -1,4 +1,7 @@
 {
   "label.air_percent": "Air: %s%%",
-  "gas.mes.quantum_stabilizer": "Quantum Stabilizer"
+  "gas.mes.quantum_stabilizer": "Quantum Stabilizer",
+  "gas.mes.neutronium": "Neutronium",
+  "gas.mes.neutron_source": "Neutron Source",
+  "item.mes.neutronium_pellet": "Neutronium Pellet"
 }

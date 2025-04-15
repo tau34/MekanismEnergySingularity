@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:crystallizing",
+  "chemicalType": "gas",
+  "input": {
+    "amount": 1000,
+    "gas": "mes:neutronium"
+  },
+  "output": {
+    "item": "mes:neutronium_pellet"
+  }
+}
