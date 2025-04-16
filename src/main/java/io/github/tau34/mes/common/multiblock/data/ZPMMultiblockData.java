@@ -1,6 +1,5 @@
 package io.github.tau34.mes.common.multiblock.data;
 
-import com.mojang.logging.LogUtils;
 import io.github.tau34.mes.common.register.MESGases;
 import io.github.tau34.mes.common.tile.zpm.TileEntityZPMBlock;
 import mekanism.api.Action;
@@ -38,14 +37,19 @@ public class ZPMMultiblockData extends MultiblockData {
         this.gasTanks.add(stabilizerTank = MultiblockChemicalTankBuilder.GAS.input(this, () -> 10000L, gas -> gas == MESGases.QUANTUM_STABILIZER.get(), this));
     }
 
-    public void setActive(boolean active) {
-        LogUtils.getLogger().info(String.valueOf(active));
+    public void setForceActive(boolean active) {
         isActive = active;
         if (active) {
             air = 0;
         } else {
             air = 400;
         }
+    }
+
+    public void setActive(boolean active) {
+        if (active) {
+            if (air <= 0) isActive = true;
+        } else isActive = false;
     }
 
     public boolean isActive() {
@@ -68,7 +72,7 @@ public class ZPMMultiblockData extends MultiblockData {
     public boolean tick(Level world) {
         boolean np = super.tick(world);
         np |= air != clientAir;
-        if (!isActive && air == 0) setActive(true);
+        if (!isActive && air == 0) this.isActive = true;
         if (isActive) {
             energyContainer.insert(FloatingLong.createConst(1_500_000_000L), Action.EXECUTE, AutomationType.INTERNAL);
             stabilizerTank.extract(10L, Action.EXECUTE, AutomationType.INTERNAL);

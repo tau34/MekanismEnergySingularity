@@ -5,11 +5,11 @@
     "gas": "mekanism:antimatter"
   },
   "output": {
-    "amount": 100,
+    "amount": 50,
     "gas": "mes:quantum_stabilizer"
   },
   "rightInput": {
-    "amount": 1,
+    "amount": 5,
     "gas": "mes:neutronium"
   }
 }

@@ -18,7 +18,7 @@ public class ZPMCache extends MultiblockCache<ZPMMultiblockData> {
     @Override
     public void apply(ZPMMultiblockData data) {
         super.apply(data);
-        data.setActive(isActive);
+        data.setForceActive(isActive);
         data.setAir(air);
     }
 

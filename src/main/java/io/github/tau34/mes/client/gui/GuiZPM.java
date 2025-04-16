@@ -12,12 +12,15 @@ import mekanism.client.gui.element.gauge.GuiGasGauge;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.generators.common.GeneratorsLang;
 import mekanism.generators.common.MekanismGenerators;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
+import org.jetbrains.annotations.NotNull;
 
 public class GuiZPM extends GuiMekanismTile<TileEntityZPMBlock, MekanismTileContainer<TileEntityZPMBlock>> {
     public GuiZPM(MekanismTileContainer<TileEntityZPMBlock> container, Inventory inv, Component title) {
         super(container, inv, title);
+        this.titleLabelY = 4;
         this.dynamicSlots = true;
     }
 
@@ -35,8 +38,14 @@ public class GuiZPM extends GuiMekanismTile<TileEntityZPMBlock, MekanismTileCont
         }, GaugeType.MEDIUM, this, 7, 16, 34, 56));
         this.addRenderableWidget(new GuiGasGauge(() -> this.tile.getMultiblock().stabilizerTank,
                 () -> this.tile.getMultiblock().getGasTanks(null), GaugeType.STANDARD, this, 45, 16));
-        this.addRenderableWidget(new TranslationButton(this, 76, 20, 50, 16, GeneratorsLang.FISSION_SCRAM, () -> MekanismGenerators.packetHandler().sendToServer(new MESPacketGuiInteract(MESPacketGuiInteract.MESGuiInteraction.ZPM_ACTIVATE, this.tile, 0D))));
+        this.addRenderableWidget(new TranslationButton(this, 76, 20, 50, 56, GeneratorsLang.FISSION_SCRAM, () -> MekanismGenerators.packetHandler().sendToServer(new MESPacketGuiInteract(MESPacketGuiInteract.MESGuiInteraction.ZPM_ACTIVATE, this.tile, 0D))));
         this.addRenderableWidget(new AirGauge(this, 133, 16));
+    }
+
+    @Override
+    protected void drawForegroundText(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY) {
+        this.renderTitleText(guiGraphics);
+        super.drawForegroundText(guiGraphics, mouseX, mouseY);
     }
 
     public int getAir() {

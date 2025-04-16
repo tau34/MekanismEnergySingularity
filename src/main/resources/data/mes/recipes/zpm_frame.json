@@ -9,9 +9,9 @@
     }
   },
   "pattern": [
-    " P ",
-    "PCP",
-    " P "
+    " C ",
+    "CPC",
+    " C "
   ],
   "result": {
     "count": 1,

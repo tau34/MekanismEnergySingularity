@@ -1,5 +1,6 @@
 package io.github.tau34.mes.common.tile.zpm;
 
+import io.github.tau34.mes.MESLang;
 import io.github.tau34.mes.common.multiblock.data.ZPMMultiblockData;
 import io.github.tau34.mes.common.register.MESBlocks;
 import mekanism.api.annotations.NothingNullByDefault;
@@ -21,8 +22,12 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.event.ForgeEventFactory;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.EnumSet;
 
 public class TileEntityZPMLogicAdapter extends TileEntityZPMBlock implements IReactorLogic<TileEntityZPMLogicAdapter.ZPMLogic> {
     public ZPMLogic logic;
@@ -38,9 +43,23 @@ public class TileEntityZPMLogicAdapter extends TileEntityZPMBlock implements IRe
     protected boolean onUpdateServer(ZPMMultiblockData multiblock) {
         boolean np = super.onUpdateServer(multiblock);
         RedstoneStatus status = this.getStatus();
+        if (status != this.prevStatus) {
+            Level world = this.getLevel();
+            if (world != null) {
+                Direction side = multiblock.getOutsideSide(this.worldPosition);
+                if (side == null) {
+                    world.updateNeighborsAt(this.getBlockPos(), this.getBlockType());
+                } else if (!ForgeEventFactory.onNeighborNotify(world, this.worldPosition, this.getBlockState(), EnumSet.of(side), false).isCanceled()) {
+                    world.neighborChanged(this.worldPosition.relative(side), this.getBlockType(), this.worldPosition);
+                }
+            }
+
+            this.prevStatus = status;
+        }
         return np;
     }
 
+    @ComputerMethod(nameOverride = "getLogicMode")
     @Override
     public ZPMLogic getMode() {
         return logic;
@@ -131,8 +150,8 @@ public class TileEntityZPMLogicAdapter extends TileEntityZPMBlock implements IRe
     public static enum ZPMLogic implements IReactorLogicMode<ZPMLogic>, IHasTranslationKey {
         DISABLED(GeneratorsLang.REACTOR_LOGIC_DISABLED, GeneratorsLang.DESCRIPTION_REACTOR_DISABLED, new ItemStack(Items.GUNPOWDER), EnumColor.DARK_GRAY),
         ACTIVATION(GeneratorsLang.REACTOR_LOGIC_ACTIVATION, GeneratorsLang.DESCRIPTION_REACTOR_ACTIVATION, new ItemStack(Items.FLINT_AND_STEEL), EnumColor.AQUA),
-        READY(GeneratorsLang.REACTOR_LOGIC_READY, GeneratorsLang.DESCRIPTION_REACTOR_READY, new ItemStack(Items.REDSTONE), EnumColor.AQUA),
-        DEPLETED(GeneratorsLang.REACTOR_LOGIC_DEPLETED, GeneratorsLang.DESCRIPTION_REACTOR_DEPLETED, new ItemStack(Items.REDSTONE), EnumColor.RED);
+        READY(GeneratorsLang.REACTOR_LOGIC_READY, MESLang.DESCRIPTION_ZPM_READY, new ItemStack(Items.REDSTONE), EnumColor.AQUA),
+        DEPLETED(MESLang.ZPM_LOGIC_DEPLETED, MESLang.DESCRIPTION_ZPM_DEPLETED, new ItemStack(Items.REDSTONE), EnumColor.RED);
 
         private static final ZPMLogic[] MODES = values();
         private final ILangEntry name;

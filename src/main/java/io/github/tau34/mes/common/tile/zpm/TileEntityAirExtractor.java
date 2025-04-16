@@ -1,6 +1,7 @@
 package io.github.tau34.mes.common.tile.zpm;
 
 import com.mojang.logging.LogUtils;
+import io.github.tau34.mes.MESLang;
 import io.github.tau34.mes.common.register.MESBlocks;
 import mekanism.api.IConfigurable;
 import mekanism.api.text.EnumColor;
@@ -26,7 +27,7 @@ public class TileEntityAirExtractor extends TileEntityMekanism implements IConfi
             boolean oldMode = this.getActive();
             this.setActive(!oldMode);
             LogUtils.getLogger().info(String.valueOf(oldMode));
-            player.displayClientMessage(GeneratorsLang.REACTOR_PORT_EJECT.translateColored(EnumColor.GRAY, BooleanStateDisplay.InputOutput.of(oldMode, true)), true);
+            player.displayClientMessage(MESLang.AIR_EXTRACTOR_MODE.translateColored(EnumColor.GRAY, BooleanStateDisplay.ActiveDisabled.of(!oldMode, true)), true);
         }
 
         return InteractionResult.SUCCESS;

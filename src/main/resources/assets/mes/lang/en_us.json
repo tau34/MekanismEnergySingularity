@@ -3,5 +3,20 @@
   "gas.mes.quantum_stabilizer": "Quantum Stabilizer",
   "gas.mes.neutronium": "Neutronium",
   "gas.mes.neutron_source": "Neutron Source",
-  "item.mes.neutronium_pellet": "Neutronium Pellet"
+  "item.mes.neutronium_pellet": "Neutronium Pellet",
+  "container.mes.neutron_condenser": "Neutron Condenser",
+  "container.mes.zpm_frame": "Zero Point Module",
+  "container.mes.zpm_logic_adapter": "ZPM Logic Adapter",
+  "block.mes.zpm_frame": "ZPM Frame",
+  "block.mes.zpm_port": "ZPM Port",
+  "block.mes.void_resonance_engine": "Void Resonance Engine",
+  "block.mes.air_extractor": "Air Extractor",
+  "block.mes.zpm_logic_adapter": "ZPM Logic Adapter",
+  "block.mes.neutron_condenser": "Neutron Condenser",
+  "block.mes.quantum_casing": "Quantum Casing",
+  "zpm.mes.logic.depleted": "Insufficient Stabilizer",
+  "description.mes.zpm.logic.ready": "Output when internal atmosphere within the ZPM has reached zero",
+  "description.mes.zpm.logic.depleted": "Output when the reactor has insufficient stabilizer to sustain a reaction",
+  "zpm.mes.configurator.port_eject": "Toggled ZPM Port eject mode to: %1$s.",
+  "zpm.mes.configurator.air_extractor": "Toggled Air Extractor mode to: %1$s."
 }

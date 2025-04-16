@@ -1,20 +1,21 @@
+
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "C": {
-      "item": "mekanism_extras:absolute_control_circuit"
+    "R": {
+      "item": "minecraft:redstone_dust"
     },
     "Z": {
       "item": "mes:zpm_frame"
     }
   },
   "pattern": [
-    " Z ",
-    "ZCZ",
-    " Z "
+    " R ",
+    "RZR",
+    " R "
   ],
   "result": {
-    "count": 2,
-    "item": "mes:zpm_port"
+    "count": 1,
+    "item": "mes:zpm_logic_adapter"
   }
 }

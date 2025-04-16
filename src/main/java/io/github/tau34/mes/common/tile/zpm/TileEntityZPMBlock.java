@@ -30,7 +30,7 @@ public class TileEntityZPMBlock extends TileEntityMultiblock<ZPMMultiblockData> 
 
     public void setZPMActive(boolean b) {
         if (this.getMultiblock().isFormed()) {
-            this.getMultiblock().setActive(b);
+            this.getMultiblock().setForceActive(b);
         }
     }
 }

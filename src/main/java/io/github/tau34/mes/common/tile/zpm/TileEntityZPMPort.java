@@ -1,5 +1,6 @@
 package io.github.tau34.mes.common.tile.zpm;
 
+import io.github.tau34.mes.MESLang;
 import io.github.tau34.mes.common.multiblock.data.ZPMMultiblockData;
 import io.github.tau34.mes.common.register.MESBlocks;
 import mekanism.api.IContentsListener;
@@ -56,7 +57,7 @@ public class TileEntityZPMPort extends TileEntityZPMBlock implements IMultiblock
         if (!this.isRemote()) {
             boolean oldMode = this.getActive();
             this.setActive(!oldMode);
-            player.displayClientMessage(GeneratorsLang.REACTOR_PORT_EJECT.translateColored(EnumColor.GRAY, BooleanStateDisplay.InputOutput.of(oldMode, true)), true);
+            player.displayClientMessage(MESLang.ZPM_PORT_EJECT.translateColored(EnumColor.GRAY, BooleanStateDisplay.InputOutput.of(oldMode, true)), true);
         }
 
         return InteractionResult.SUCCESS;
