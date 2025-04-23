@@ -50,7 +50,7 @@ public class GuiZPMLogicAdapter extends GuiMekanismTile<TileEntityZPMLogicAdapte
             Objects.requireNonNull(var10009);
             this.addRenderableWidget(new ReactorLogicButton<>(this, 17, var10005, i, this.tile, var4, var10009::getModes, (type) -> {
                 if (type != null) {
-                    MekanismGenerators.packetHandler().sendToServer(new MESPacketGuiInteract(MESPacketGuiInteract.MESGuiInteraction.LOGIC_TYPE, this.tile, type.ordinal()));
+                    Mekanism.packetHandler().sendToServer(new MESPacketGuiInteract(MESPacketGuiInteract.MESGuiInteraction.LOGIC_TYPE, this.tile, type.ordinal()));
                 }
             }));
         }

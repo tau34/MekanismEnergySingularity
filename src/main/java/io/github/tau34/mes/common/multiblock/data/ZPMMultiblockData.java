@@ -13,7 +13,9 @@ import mekanism.common.capabilities.energy.VariableCapacityEnergyContainer;
 import mekanism.common.inventory.container.sync.dynamic.ContainerSync;
 import mekanism.common.lib.multiblock.MultiblockData;
 import mekanism.common.network.to_client.PacketLightningRender;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.Objects;
@@ -30,6 +32,7 @@ public class ZPMMultiblockData extends MultiblockData {
     private final FloatingLong clientEnergy = FloatingLong.ZERO;
     @ContainerSync(getter = "getMaxEnergy")
     private final FloatingLong clientMaxEnergy = FloatingLong.ZERO;
+    private AABB deathZone;
 
     public ZPMMultiblockData(TileEntityZPMBlock tile) {
         super(tile);
@@ -86,8 +89,20 @@ public class ZPMMultiblockData extends MultiblockData {
             if (stabilizerTank.isEmpty()) {
                 world.explode(null, x, (max.y + min.y) / 2, z, 15F, Level.ExplosionInteraction.TNT);
             }
+            if (world.getRandom().nextInt() % 20 == 0) {
+                for (Entity entity : this.getWorld().getEntitiesOfClass(Entity.class, this.deathZone)) {
+                    entity.hurt(entity.damageSources().magic(), 10000.0F);
+                }
+            }
         }
         return np;
+    }
+
+    @Override
+    public void onCreated(Level world) {
+        super.onCreated(world);
+        deathZone = new AABB(this.getMinPos().offset(1, 1, 1),
+                this.getMaxPos().offset(-1, -1, -1));
     }
 
     public FloatingLong getEnergy() {

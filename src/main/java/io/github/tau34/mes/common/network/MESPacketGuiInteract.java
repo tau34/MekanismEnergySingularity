@@ -1,5 +1,7 @@
 package io.github.tau34.mes.common.network;
 
+import com.mojang.logging.LogUtils;
+import io.github.tau34.mes.common.tile.TileEntityUniverseGenerator;
 import io.github.tau34.mes.common.tile.zpm.TileEntityZPMBlock;
 import io.github.tau34.mes.common.tile.zpm.TileEntityZPMLogicAdapter;
 import mekanism.api.functions.TriConsumer;
@@ -66,6 +68,46 @@ public class MESPacketGuiInteract implements IMekanismPacket {
         LOGIC_TYPE((tile, player, extra) -> {
             if (tile instanceof TileEntityZPMLogicAdapter zpm) {
                 zpm.setLogicTypeFromPacket(TileEntityZPMLogicAdapter.ZPMLogic.byIndexStatic((int) Math.round(extra)));
+            }
+        }),
+        UNIVERSE_DENSITY((tile, player, extra) -> {
+            if (tile instanceof TileEntityUniverseGenerator ug) {
+                ug.setDensity((int) Math.round(extra));
+            }
+        }),
+        UNIVERSE_RARE((tile, player, extra) -> {
+            if (tile instanceof TileEntityUniverseGenerator ug) {
+                ug.setRare((int) Math.round(extra));
+            }
+        }),
+        UNIVERSE_RADIUS((tile, player, extra) -> {
+            if (tile instanceof TileEntityUniverseGenerator ug) {
+                ug.setRadius((int) Math.round(extra));
+            }
+        }),
+        UNIVERSE_GRAVITY((tile, player, extra) -> {
+            if (tile instanceof TileEntityUniverseGenerator ug) {
+                ug.setGravity((int) Math.round(extra));
+            }
+        }),
+        UNIVERSE_CRUST((tile, player, extra) -> {
+            if (tile instanceof TileEntityUniverseGenerator ug) {
+                ug.setCrust((int) Math.round(extra));
+            }
+        }),
+        UNIVERSE_GENERATE((tile, player, extra) -> {
+            if (tile instanceof TileEntityUniverseGenerator ug) {
+                ug.generate();
+            }
+        }),
+        UNIVERSE_DISCONNECT((tile, player, extra) -> {
+            if (tile instanceof TileEntityUniverseGenerator ug) {
+                ug.disconnect();
+            }
+        }),
+        UNIVERSE_MINE((tile, player, extra) -> {
+            if (tile instanceof TileEntityUniverseGenerator ug) {
+                ug.setMining((int)(Math.round(extra)));
             }
         });
         

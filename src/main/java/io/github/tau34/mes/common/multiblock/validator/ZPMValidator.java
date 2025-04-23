@@ -25,7 +25,7 @@ public class ZPMValidator extends CuboidStructureValidator<ZPMMultiblockData> {
         } else if (BlockType.is(block, MESBlockTypes.ZPM_PORT)) {
             return FormationProtocol.CasingType.VALVE;
         } else {
-            if (BlockType.is(block, MESBlockTypes.VOID_RESONANCE_ENGINE))
+            if (BlockType.is(block, MESBlockTypes.VOID_RESONANCE_ENGINE, MESBlockTypes.ZPM_LOGIC_ADAPTER))
                 return FormationProtocol.CasingType.OTHER;
             return FormationProtocol.CasingType.INVALID;
         }

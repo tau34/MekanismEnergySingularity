@@ -5,9 +5,7 @@ import com.jerry.mekanism_extras.common.ExtraLang;
 import com.jerry.mekanism_extras.common.command.ExtraBuilders;
 import com.jerry.mekanism_extras.integration.Addons;
 import com.mojang.logging.LogUtils;
-import io.github.tau34.mes.client.gui.GuiNeutronCondenser;
-import io.github.tau34.mes.client.gui.GuiZPM;
-import io.github.tau34.mes.client.gui.GuiZPMLogicAdapter;
+import io.github.tau34.mes.client.gui.*;
 import io.github.tau34.mes.common.multiblock.MESBuilders;
 import io.github.tau34.mes.common.multiblock.cache.ZPMCache;
 import io.github.tau34.mes.common.multiblock.data.ZPMMultiblockData;
@@ -94,6 +92,10 @@ public class MESMod {
                 ClientRegistrationUtil.registerScreen(MESContainerTypes.ZPM, GuiZPM::new);
                 ClientRegistrationUtil.registerScreen(MESContainerTypes.ZPM_LOGIC_ADAPTER, GuiZPMLogicAdapter::new);
                 ClientRegistrationUtil.registerScreen(MESContainerTypes.NEUTRON_CONDENSER, GuiNeutronCondenser::new);
+                ClientRegistrationUtil.registerScreen(MESContainerTypes.UNIVERSE_GENERATOR, GuiUniverseGenerator::new);
+                ClientRegistrationUtil.registerScreen(MESContainerTypes.UNIVERSE_CONFIG, GuiUniverseConfig::new);
+                ClientRegistrationUtil.registerScreen(MESContainerTypes.UNIVERSE_GENERATOR_OUTPUT, GuiUniverseGeneratorOutput::new);
+                ClientRegistrationUtil.registerScreen(MESContainerTypes.UNIVERSE_GENERATOR_MANAGER, GuiUniverseGeneratorManager::new);
             });
         }
     }

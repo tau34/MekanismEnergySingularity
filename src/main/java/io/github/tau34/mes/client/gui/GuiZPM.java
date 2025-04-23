@@ -9,6 +9,7 @@ import mekanism.client.gui.element.button.TranslationButton;
 import mekanism.client.gui.element.gauge.GaugeType;
 import mekanism.client.gui.element.gauge.GuiEnergyGauge;
 import mekanism.client.gui.element.gauge.GuiGasGauge;
+import mekanism.common.Mekanism;
 import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.generators.common.GeneratorsLang;
 import mekanism.generators.common.MekanismGenerators;
@@ -38,7 +39,7 @@ public class GuiZPM extends GuiMekanismTile<TileEntityZPMBlock, MekanismTileCont
         }, GaugeType.MEDIUM, this, 7, 16, 34, 56));
         this.addRenderableWidget(new GuiGasGauge(() -> this.tile.getMultiblock().stabilizerTank,
                 () -> this.tile.getMultiblock().getGasTanks(null), GaugeType.STANDARD, this, 45, 16));
-        this.addRenderableWidget(new TranslationButton(this, 76, 20, 50, 56, GeneratorsLang.FISSION_SCRAM, () -> MekanismGenerators.packetHandler().sendToServer(new MESPacketGuiInteract(MESPacketGuiInteract.MESGuiInteraction.ZPM_ACTIVATE, this.tile, 0D))));
+        this.addRenderableWidget(new TranslationButton(this, 76, 20, 50, 56, GeneratorsLang.FISSION_SCRAM, () -> Mekanism.packetHandler().sendToServer(new MESPacketGuiInteract(MESPacketGuiInteract.MESGuiInteraction.ZPM_ACTIVATE, this.tile, 0D))));
         this.addRenderableWidget(new AirGauge(this, 133, 16));
     }
 

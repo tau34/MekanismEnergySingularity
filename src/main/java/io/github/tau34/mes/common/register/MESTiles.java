@@ -1,6 +1,7 @@
 package io.github.tau34.mes.common.register;
 
 import io.github.tau34.mes.common.tile.TileEntityNeutronCondenser;
+import io.github.tau34.mes.common.tile.TileEntityUniverseGenerator;
 import io.github.tau34.mes.common.tile.zpm.*;
 import mekanism.common.registration.impl.TileEntityTypeDeferredRegister;
 import mekanism.common.registration.impl.TileEntityTypeRegistryObject;
@@ -15,4 +16,5 @@ public class MESTiles {
     public static final TileEntityTypeRegistryObject<TileEntityAirExtractor> AIR_EXTRACTOR = REGISTER.register(MESBlocks.AIR_EXTRACTOR, TileEntityAirExtractor::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
     public static final TileEntityTypeRegistryObject<TileEntityZPMLogicAdapter> ZPM_LOGIC_ADAPTER = REGISTER.register(MESBlocks.ZPM_LOGIC_ADAPTER, TileEntityZPMLogicAdapter::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
     public static final TileEntityTypeRegistryObject<TileEntityNeutronCondenser> NEUTRON_CONDENSER = REGISTER.register(MESBlocks.NEUTRON_CONDENSER, TileEntityNeutronCondenser::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
+    public static final TileEntityTypeRegistryObject<TileEntityUniverseGenerator> UNIVERSE_GENERATOR = REGISTER.register(MESBlocks.UNIVERSE_GENERATOR, TileEntityUniverseGenerator::new, TileEntityMekanism::tickServer, TileEntityMekanism::tickClient);
 }
