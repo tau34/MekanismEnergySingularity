@@ -13,17 +13,17 @@ import mekanism.common.recipe.lookup.IRecipeLookupHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class MESRecipeCacheLookupMonitor<RECIPE extends MekanismRecipe> implements ICachedRecipeHolder<RECIPE>, IContentsListener {
-    private final IMESRecipeLookupHandler<RECIPE> handler;
+public class MESRecipeCacheLookupMonitor<R extends MekanismRecipe> implements ICachedRecipeHolder<R>, IContentsListener {
+    private final IMESRecipeLookupHandler<R> handler;
     protected final int cacheIndex;
-    protected CachedRecipe<RECIPE> cachedRecipe;
+    protected CachedRecipe<R> cachedRecipe;
     protected boolean hasNoRecipe;
 
-    public MESRecipeCacheLookupMonitor(IMESRecipeLookupHandler<RECIPE> handler) {
+    public MESRecipeCacheLookupMonitor(IMESRecipeLookupHandler<R> handler) {
         this(handler, 0);
     }
 
-    public MESRecipeCacheLookupMonitor(IMESRecipeLookupHandler<RECIPE> handler, int cacheIndex) {
+    public MESRecipeCacheLookupMonitor(IMESRecipeLookupHandler<R> handler, int cacheIndex) {
         this.handler = handler;
         this.cacheIndex = cacheIndex;
     }
@@ -48,7 +48,7 @@ public class MESRecipeCacheLookupMonitor<RECIPE extends MekanismRecipe> implemen
     }
 
     public boolean updateAndProcess() {
-        CachedRecipe<RECIPE> oldCache = this.cachedRecipe;
+        CachedRecipe<R> oldCache = this.cachedRecipe;
         this.cachedRecipe = this.getUpdatedCache(this.cacheIndex);
         if (this.cachedRecipe != oldCache) {
             this.handler.onCachedRecipeChanged(this.cachedRecipe, this.cacheIndex);
@@ -62,7 +62,7 @@ public class MESRecipeCacheLookupMonitor<RECIPE extends MekanismRecipe> implemen
         }
     }
 
-    public void loadSavedData(@NotNull CachedRecipe<RECIPE> cached, int cacheIndex) {
+    public void loadSavedData(@NotNull CachedRecipe<R> cached, int cacheIndex) {
         if (this.cachedIndexMatches(cacheIndex)) {
             ICachedRecipeHolder.super.loadSavedData(cached, cacheIndex);
             if (cached instanceof ItemStackConstantChemicalToItemStackCachedRecipe<?, ?, ?, ?> c) {
@@ -79,17 +79,17 @@ public class MESRecipeCacheLookupMonitor<RECIPE extends MekanismRecipe> implemen
     }
 
     @Override
-    public @Nullable CachedRecipe<RECIPE> getCachedRecipe(int cacheIndex) {
+    public @Nullable CachedRecipe<R> getCachedRecipe(int cacheIndex) {
         return this.cachedIndexMatches(cacheIndex) ? this.cachedRecipe : null;
     }
 
     @Override
-    public @Nullable RECIPE getRecipe(int cacheIndex) {
+    public @Nullable R getRecipe(int cacheIndex) {
         return this.cachedIndexMatches(cacheIndex) ? this.handler.getRecipe(cacheIndex) : null;
     }
 
     @Override
-    public @Nullable CachedRecipe<RECIPE> createNewCachedRecipe(@NotNull RECIPE recipe, int cacheIndex) {
+    public @Nullable CachedRecipe<R> createNewCachedRecipe(@NotNull R recipe, int cacheIndex) {
         return this.cachedIndexMatches(cacheIndex) ? this.handler.createNewCachedRecipe(recipe, cacheIndex) : null;
     }
 

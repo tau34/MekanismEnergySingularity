@@ -1,5 +1,6 @@
 package io.github.tau34.mes.common.recipe.cache;
 
+import com.mojang.logging.LogUtils;
 import io.github.tau34.mes.common.recipe.MESRecipeType;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.ingredients.InputIngredient;
@@ -30,6 +31,7 @@ public abstract class MESAbstractInputRecipeCache<R extends MekanismRecipe> impl
     protected void initCacheIfNeeded(@Nullable Level world) {
         if (!initialized) {
             initialized = true;
+            LogUtils.getLogger().info("{}", recipeType.getRecipes(world));
             initCache(recipeType.getRecipes(world));
         }
     }

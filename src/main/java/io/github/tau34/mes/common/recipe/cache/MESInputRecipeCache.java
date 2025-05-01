@@ -4,6 +4,7 @@ import io.github.tau34.mes.common.recipe.MESRecipeType;
 import mekanism.api.chemical.Chemical;
 import mekanism.api.chemical.ChemicalStack;
 import mekanism.api.recipes.MekanismRecipe;
+import mekanism.api.recipes.chemical.ChemicalChemicalToChemicalRecipe;
 import mekanism.api.recipes.ingredients.ChemicalStackIngredient;
 import mekanism.common.recipe.lookup.cache.type.ChemicalInputCache;
 
@@ -14,6 +15,12 @@ public class MESInputRecipeCache {
     public static class SingleChemical<C extends Chemical<C>, S extends ChemicalStack<C>, R extends MekanismRecipe & Predicate<S>> extends MESSingleInputRecipeCache<S, ChemicalStackIngredient<C, S>, R, ChemicalInputCache<C, S, R>> {
         public SingleChemical(MESRecipeType<R, ?> recipeType, Function<R, ChemicalStackIngredient<C, S>> inputExtractor) {
             super(recipeType, inputExtractor, new ChemicalInputCache<>());
+        }
+    }
+
+    public static class EitherSideChemical<C extends Chemical<C>, S extends ChemicalStack<C>, R extends ChemicalChemicalToChemicalRecipe<C, S, ? extends ChemicalStackIngredient<C, S>>> extends MESEitherSideInputRecipeCache<S, ChemicalStackIngredient<C, S>, R, ChemicalInputCache<C, S, R>> {
+        public EitherSideChemical(MESRecipeType<R, ?> recipeType) {
+            super(recipeType, ChemicalChemicalToChemicalRecipe::getLeftInput, ChemicalChemicalToChemicalRecipe::getRightInput, new ChemicalInputCache<>());
         }
     }
 }

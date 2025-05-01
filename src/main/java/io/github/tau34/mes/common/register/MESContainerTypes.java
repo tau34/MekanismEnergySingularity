@@ -4,7 +4,9 @@ import io.github.tau34.mes.common.container.UniverseConfigContainer;
 import io.github.tau34.mes.common.container.UniverseGeneratorContainer;
 import io.github.tau34.mes.common.container.UniverseGeneratorManagerContainer;
 import io.github.tau34.mes.common.tile.TileEntityNeutronCondenser;
+import io.github.tau34.mes.common.tile.TileEntityPlasmaCooler;
 import io.github.tau34.mes.common.tile.TileEntityUniverseGenerator;
+import io.github.tau34.mes.common.tile.fusion.TileEntityAdvancedFusionBlock;
 import io.github.tau34.mes.common.tile.zpm.TileEntityZPMBlock;
 import io.github.tau34.mes.common.tile.zpm.TileEntityZPMLogicAdapter;
 import mekanism.common.inventory.container.tile.EmptyTileContainer;
@@ -22,4 +24,6 @@ public class MESContainerTypes {
     public static final ContainerTypeRegistryObject<MekanismTileContainer<TileEntityUniverseGenerator>> UNIVERSE_CONFIG = REGISTER.register("universe_config", TileEntityUniverseGenerator.class, UniverseConfigContainer::new);
     public static final ContainerTypeRegistryObject<MekanismTileContainer<TileEntityUniverseGenerator>> UNIVERSE_GENERATOR_OUTPUT = REGISTER.register("universe_generator_output", TileEntityUniverseGenerator.class);
     public static final ContainerTypeRegistryObject<MekanismTileContainer<TileEntityUniverseGenerator>> UNIVERSE_GENERATOR_MANAGER = REGISTER.register("universe_generator_manager", TileEntityUniverseGenerator.class, UniverseGeneratorManagerContainer::new);
+    public static final ContainerTypeRegistryObject<MekanismTileContainer<TileEntityAdvancedFusionBlock>> ADVANCED_FUSION = REGISTER.register("advanced_fusion", TileEntityAdvancedFusionBlock.class);
+    public static final ContainerTypeRegistryObject<MekanismTileContainer<TileEntityPlasmaCooler>> PLASMA_COOLER = REGISTER.register("plasma_cooler", TileEntityPlasmaCooler.class);
 }

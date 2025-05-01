@@ -1,0 +1,15 @@
+{
+  "type":"mes:advanced_fusion",
+  "leftInput": {
+    "amount": 1,
+    "gas":"mekanismgenerators:deuterium"
+  },
+  "output": {
+    "amount": 1,
+    "gas":"mes:helium_plasma"
+  },
+  "rightInput": {
+    "amount": 1,
+    "gas":"mekanismgenerators:tritium"
+  }
+}

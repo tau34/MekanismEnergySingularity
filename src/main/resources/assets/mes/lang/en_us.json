@@ -64,5 +64,8 @@
   "description.mes.air_extractor": "An auxiliary unit responsible for extracting all gaseous particles from the ZPM chamber to ensure a vacuum environment.",
   "description.mes.zpm_logic_adapter": "A logic control unit that connects the ZPM multiblock to external redstone and digital systems.",
   "description.mes.neutron_condenser": "A high-energy processing unit that compacts neutron-rich isotopes into Neutronium under extreme conditions.",
-  "description.mes.universe_generator": "A massive dimensional generator capable of synthesizing isolated universes for remote automated resource extraction."
+  "description.mes.universe_generator": "A massive dimensional generator capable of synthesizing isolated universes for remote automated resource extraction.",
+  "gas.mes.helium_plasma": "Helium Plasma",
+  "block.mes.advanced_fusion_frame": "Advanced Fusion Frame",
+  "block.mes.advanced_fusion_port": "Advanced Fusion Port"
 }

@@ -1,26 +1,20 @@
 package io.github.tau34.mes;
 
-import com.jerry.generator_extras.common.ExtraGenLang;
-import com.jerry.mekanism_extras.common.ExtraLang;
-import com.jerry.mekanism_extras.common.command.ExtraBuilders;
-import com.jerry.mekanism_extras.integration.Addons;
 import com.mojang.logging.LogUtils;
 import io.github.tau34.mes.client.gui.*;
 import io.github.tau34.mes.common.multiblock.MESBuilders;
 import io.github.tau34.mes.common.multiblock.cache.ZPMCache;
+import io.github.tau34.mes.common.multiblock.data.AdvancedFusionMultiblockData;
 import io.github.tau34.mes.common.multiblock.data.ZPMMultiblockData;
+import io.github.tau34.mes.common.multiblock.validator.AdvancedFusionValidator;
 import io.github.tau34.mes.common.multiblock.validator.ZPMValidator;
 import io.github.tau34.mes.common.recipe.MESRecipeType;
 import io.github.tau34.mes.common.register.*;
 import mekanism.client.ClientRegistrationUtil;
-import mekanism.common.command.CommandMek;
 import mekanism.common.command.builders.BuildCommand;
-import mekanism.common.inventory.container.tile.MekanismTileContainer;
 import mekanism.common.lib.multiblock.MultiblockCache;
 import mekanism.common.lib.multiblock.MultiblockManager;
-import mekanism.common.registration.impl.ContainerTypeRegistryObject;
-import mekanism.common.tier.FactoryTier;
-import mekanism.common.util.EnumUtils;
+import mekanism.generators.common.GeneratorsLang;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -44,6 +38,7 @@ public class MESMod {
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public static MultiblockManager<ZPMMultiblockData> zpmManager = new MultiblockManager<>("zpm", ZPMCache::new, ZPMValidator::new);
+    public static MultiblockManager<AdvancedFusionMultiblockData> advancedFusionManager = new MultiblockManager<>("advancedFusion", MultiblockCache::new, AdvancedFusionValidator::new);
 
     public MESMod() {
         //MMCConfig.registerConfig(ModLoadingContext.get());
@@ -71,6 +66,7 @@ public class MESMod {
 
     private void registerCommands(RegisterCommandsEvent event) {
         BuildCommand.register("zpm", MESLang.ZPM, new MESBuilders.ZPMBuilder());
+        BuildCommand.register("advanced_fusion", GeneratorsLang.FUSION_REACTOR, new MESBuilders.AdvancedFusionBuilder());
     }
 
     @SubscribeEvent
@@ -96,6 +92,8 @@ public class MESMod {
                 ClientRegistrationUtil.registerScreen(MESContainerTypes.UNIVERSE_CONFIG, GuiUniverseConfig::new);
                 ClientRegistrationUtil.registerScreen(MESContainerTypes.UNIVERSE_GENERATOR_OUTPUT, GuiUniverseGeneratorOutput::new);
                 ClientRegistrationUtil.registerScreen(MESContainerTypes.UNIVERSE_GENERATOR_MANAGER, GuiUniverseGeneratorManager::new);
+                ClientRegistrationUtil.registerScreen(MESContainerTypes.ADVANCED_FUSION, GuiAdvancedFusion::new);
+                ClientRegistrationUtil.registerScreen(MESContainerTypes.PLASMA_COOLER, GuiPlasmaCooler::new);
             });
         }
     }

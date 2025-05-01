@@ -51,7 +51,10 @@ public enum MESLang implements ILangEntry {
     DESCRIPTION_AIR_EXTRACTOR("description", "air_extractor"),
     DESCRIPTION_ZPM_LOGIC_ADAPTER("description", "zpm_logic_adapter"),
     DESCRIPTION_NEUTRON_CONDENSER("description", "neutron_condenser"),
-    DESCRIPTION_UNIVERSE_GENERATOR("description", "universe_generator");
+    DESCRIPTION_UNIVERSE_GENERATOR("description", "universe_generator"),
+    ADVANCED_FUSION_MODE_INPUT_LEFT("advanced_fusion", "port.input_left"),
+    ADVANCED_FUSION_MODE_INPUT_RIGHT("advanced_fusion", "port.input_right"),
+    ADVANCED_FUSION_MODE_OUTPUT("advanced_fusion", "port.output");
 
     private final String key;
 

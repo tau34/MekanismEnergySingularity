@@ -11,6 +11,7 @@ import mekanism.common.Mekanism;
 import mekanism.common.capabilities.chemical.multiblock.MultiblockChemicalTankBuilder;
 import mekanism.common.capabilities.energy.VariableCapacityEnergyContainer;
 import mekanism.common.inventory.container.sync.dynamic.ContainerSync;
+import mekanism.common.lib.multiblock.IValveHandler;
 import mekanism.common.lib.multiblock.MultiblockData;
 import mekanism.common.network.to_client.PacketLightningRender;
 import net.minecraft.world.entity.Entity;
@@ -20,7 +21,7 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.Objects;
 
-public class ZPMMultiblockData extends MultiblockData {
+public class ZPMMultiblockData extends MultiblockData implements IValveHandler {
     public IEnergyContainer energyContainer;
     @ContainerSync
     public IGasTank stabilizerTank;

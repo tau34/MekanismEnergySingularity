@@ -1,11 +1,13 @@
 package io.github.tau34.mes.common.recipe;
 
+import com.mojang.logging.LogUtils;
 import io.github.tau34.mes.MESMod;
 import io.github.tau34.mes.common.recipe.cache.MESInputRecipeCache;
 import io.github.tau34.mes.common.registration.MESRecipeTypeDeferredRegister;
 import io.github.tau34.mes.common.registration.impl.MESRecipeTypeRegistryObject;
 import mekanism.api.chemical.gas.Gas;
 import mekanism.api.chemical.gas.GasStack;
+import mekanism.api.recipes.ChemicalInfuserRecipe;
 import mekanism.api.recipes.GasToGasRecipe;
 import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.chemical.ChemicalToChemicalRecipe;
@@ -31,6 +33,8 @@ import java.util.function.Function;
 public class MESRecipeType<R extends MekanismRecipe, IC extends IInputRecipeCache> implements RecipeType<R>, IMESRecipeTypeProvider<R, IC> {
     public static final MESRecipeTypeDeferredRegister REGISTER = new MESRecipeTypeDeferredRegister("mes");
     public static final MESRecipeTypeRegistryObject<GasToGasRecipe, MESInputRecipeCache.SingleChemical<Gas, GasStack, GasToGasRecipe>> NEUTRON_CONDENSING = register("neutron_condensing", rt -> new MESInputRecipeCache.SingleChemical<>(rt, ChemicalToChemicalRecipe::getInput));
+    public static final MESRecipeTypeRegistryObject<ChemicalInfuserRecipe, MESInputRecipeCache.EitherSideChemical<Gas, GasStack, ChemicalInfuserRecipe>> ADVANCED_FUSION = register("advanced_fusion", MESInputRecipeCache.EitherSideChemical::new);
+    public static final MESRecipeTypeRegistryObject<GasToGasRecipe, MESInputRecipeCache.SingleChemical<Gas, GasStack, GasToGasRecipe>> PLASMA_COOLING = register("plasma_cooling", rt -> new MESInputRecipeCache.SingleChemical<>(rt, ChemicalToChemicalRecipe::getInput));
 
     private List<R> cachedRecipes = Collections.emptyList();
     private final ResourceLocation registryName;
@@ -94,6 +98,7 @@ public class MESRecipeType<R extends MekanismRecipe, IC extends IInputRecipeCach
             List<R> recipes = recipeManager.getAllRecipesFor(this);
             cachedRecipes = recipes.stream().filter(recipe -> !recipe.isIncomplete()).toList();
         }
+        LogUtils.getLogger().info("{}", cachedRecipes);
         return cachedRecipes;
     }
 

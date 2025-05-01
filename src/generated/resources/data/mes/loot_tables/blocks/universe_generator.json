@@ -1,0 +1,169 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:copy_name",
+              "source": "block_entity"
+            },
+            {
+              "function": "minecraft:copy_nbt",
+              "ops": [
+                {
+                  "op": "replace",
+                  "source": "componentSecurity.owner",
+                  "target": "mekData.owner"
+                },
+                {
+                  "op": "replace",
+                  "source": "componentSecurity.securityMode",
+                  "target": "mekData.securityMode"
+                },
+                {
+                  "op": "replace",
+                  "source": "componentConfig",
+                  "target": "mekData.componentConfig"
+                },
+                {
+                  "op": "replace",
+                  "source": "componentEjector",
+                  "target": "mekData.componentEjector"
+                },
+                {
+                  "op": "replace",
+                  "source": "mining",
+                  "target": "mekData.mining"
+                },
+                {
+                  "op": "replace",
+                  "source": "uranium",
+                  "target": "mekData.uranium"
+                },
+                {
+                  "op": "replace",
+                  "source": "fluorite",
+                  "target": "mekData.fluorite"
+                },
+                {
+                  "op": "replace",
+                  "source": "tin",
+                  "target": "mekData.tin"
+                },
+                {
+                  "op": "replace",
+                  "source": "gold",
+                  "target": "mekData.gold"
+                },
+                {
+                  "op": "replace",
+                  "source": "radius",
+                  "target": "mekData.radius"
+                },
+                {
+                  "op": "replace",
+                  "source": "density",
+                  "target": "mekData.density"
+                },
+                {
+                  "op": "replace",
+                  "source": "rare",
+                  "target": "mekData.rare"
+                },
+                {
+                  "op": "replace",
+                  "source": "lead",
+                  "target": "mekData.lead"
+                },
+                {
+                  "op": "replace",
+                  "source": "emerald",
+                  "target": "mekData.emerald"
+                },
+                {
+                  "op": "replace",
+                  "source": "osmium",
+                  "target": "mekData.osmium"
+                },
+                {
+                  "op": "replace",
+                  "source": "iron",
+                  "target": "mekData.iron"
+                },
+                {
+                  "op": "replace",
+                  "source": "diamond",
+                  "target": "mekData.diamond"
+                },
+                {
+                  "op": "replace",
+                  "source": "copper",
+                  "target": "mekData.copper"
+                },
+                {
+                  "op": "replace",
+                  "source": "gravity",
+                  "target": "mekData.gravity"
+                },
+                {
+                  "op": "replace",
+                  "source": "crust",
+                  "target": "mekData.crust"
+                },
+                {
+                  "op": "replace",
+                  "source": "isPresent",
+                  "target": "mekData.isPresent"
+                },
+                {
+                  "op": "replace",
+                  "source": "coal",
+                  "target": "mekData.coal"
+                },
+                {
+                  "op": "replace",
+                  "source": "naquadah",
+                  "target": "mekData.naquadah"
+                },
+                {
+                  "op": "replace",
+                  "source": "ancient_debris",
+                  "target": "mekData.ancient_debris"
+                },
+                {
+                  "op": "replace",
+                  "source": "progress",
+                  "target": "mekData.progress"
+                },
+                {
+                  "op": "replace",
+                  "source": "controlType",
+                  "target": "mekData.controlType"
+                },
+                {
+                  "op": "replace",
+                  "source": "EnergyContainers",
+                  "target": "mekData.EnergyContainers"
+                },
+                {
+                  "op": "replace",
+                  "source": "Items",
+                  "target": "mekData.Items"
+                }
+              ],
+              "source": "block_entity"
+            }
+          ],
+          "name": "mes:universe_generator"
+        }
+      ],
+      "name": "main",
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "mes:blocks/universe_generator"
+}

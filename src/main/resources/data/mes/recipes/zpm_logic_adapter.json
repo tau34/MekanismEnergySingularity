@@ -3,7 +3,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "R": {
-      "item": "minecraft:redstone_dust"
+      "item": "minecraft:redstone"
     },
     "Z": {
       "item": "mes:zpm_frame"

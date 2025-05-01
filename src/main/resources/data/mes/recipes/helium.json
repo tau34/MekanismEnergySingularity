@@ -1,0 +1,11 @@
+{
+  "type": "mes:plasma_cooling",
+  "input": {
+    "amount": 1,
+    "gas": "mes:helium_plasma"
+  },
+  "output": {
+    "amount": 1,
+    "gas": "mekanismscience:helium"
+  }
+}
