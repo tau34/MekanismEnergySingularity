@@ -67,5 +67,11 @@
   "description.mes.universe_generator": "A massive dimensional generator capable of synthesizing isolated universes for remote automated resource extraction.",
   "gas.mes.helium_plasma": "Helium Plasma",
   "block.mes.advanced_fusion_frame": "Advanced Fusion Frame",
-  "block.mes.advanced_fusion_port": "Advanced Fusion Port"
+  "block.mes.advanced_fusion_port": "Advanced Fusion Port",
+  "container.mes.advanced_fusion_frame": "Advanced Fusion Reactor",
+  "advanced_fusion.mes.port.input_left": "Left Input",
+  "advanced_fusion.mes.port.input_right": "Right Input",
+  "advanced_fusion.mes.port.output": "Output",
+  "block.mes.plasma_cooler": "Plasma Cooler",
+  "container.mes.plasma_cooler": "Plasma Cooler"
 }

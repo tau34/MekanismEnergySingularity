@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "mode=input_left": {
+      "model": "mes:block/advanced_fusion_port_left"
+    },
+    "mode=input_right": {
+      "model": "mes:block/advanced_fusion_port_right"
+    },
+    "mode=output": {
+      "model": "mes:block/advanced_fusion_port_output"
+    }
+  }
+}

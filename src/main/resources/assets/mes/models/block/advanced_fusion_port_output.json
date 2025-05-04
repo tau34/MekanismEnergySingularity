@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "mes:block/advanced_fusion_port_output"
+  }
+}

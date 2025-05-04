@@ -1,6 +1,5 @@
 package io.github.tau34.mes.common.recipe;
 
-import com.mojang.logging.LogUtils;
 import io.github.tau34.mes.MESMod;
 import io.github.tau34.mes.common.recipe.cache.MESInputRecipeCache;
 import io.github.tau34.mes.common.registration.MESRecipeTypeDeferredRegister;
@@ -13,7 +12,6 @@ import mekanism.api.recipes.MekanismRecipe;
 import mekanism.api.recipes.chemical.ChemicalToChemicalRecipe;
 import mekanism.client.MekanismClient;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
-import mekanism.common.recipe.lookup.cache.InputRecipeCache;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.crafting.Recipe;
@@ -93,13 +91,12 @@ public class MESRecipeType<R extends MekanismRecipe, IC extends IInputRecipeCach
                 return Collections.emptyList();
             }
         }
-        if (cachedRecipes.isEmpty()) {
+        if (this.cachedRecipes.isEmpty()) {
             RecipeManager recipeManager = world.getRecipeManager();
             List<R> recipes = recipeManager.getAllRecipesFor(this);
-            cachedRecipes = recipes.stream().filter(recipe -> !recipe.isIncomplete()).toList();
+            this.cachedRecipes = recipes.stream().filter(recipe -> !recipe.isIncomplete()).toList();
         }
-        LogUtils.getLogger().info("{}", cachedRecipes);
-        return cachedRecipes;
+        return this.cachedRecipes;
     }
 
     public static <C extends Container, RT extends Recipe<C>> Optional<RT> getRecipeFor(RecipeType<RT> recipeType, C inventory, Level level) {

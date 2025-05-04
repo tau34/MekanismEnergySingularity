@@ -36,7 +36,7 @@ import java.util.List;
 import java.util.function.BooleanSupplier;
 
 public class AdvancedFusionMultiblockData extends MultiblockData implements IValveHandler, IMESEitherSideRecipeLookupHandler.MESEitherSideChemicalRecipeLookupHandler<Gas, GasStack, ChemicalInfuserRecipe> {
-    List<CachedRecipe.OperationTracker.@NotNull RecipeError> TRACKED_ERROR_TYPES = List.of(CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_ENERGY, CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_ENERGY_REDUCED_RATE, CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_LEFT_INPUT, CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_RIGHT_INPUT, CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_OUTPUT_SPACE, CachedRecipe.OperationTracker.RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
+    private static final List<CachedRecipe.OperationTracker.@NotNull RecipeError> TRACKED_ERROR_TYPES = List.of(CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_ENERGY, CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_ENERGY_REDUCED_RATE, CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_LEFT_INPUT, CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_RIGHT_INPUT, CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_OUTPUT_SPACE, CachedRecipe.OperationTracker.RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
 
     @ContainerSync
     public IEnergyContainer energyContainer;
@@ -63,8 +63,8 @@ public class AdvancedFusionMultiblockData extends MultiblockData implements IVal
         super(tile);
         this.recipeCacheLookupMonitor = new MESRecipeCacheLookupMonitor<>(this);
         this.energyContainers.add(energyContainer = VariableCapacityEnergyContainer.input(FloatingLong.createConst(5_000_000_000L), this));
-        this.gasTanks.add(leftTank = MultiblockChemicalTankBuilder.GAS.input(this, () -> 10000L, gas -> true, this.createSaveAndComparator(recipeCacheLookupMonitor)));
-        this.gasTanks.add(rightTank = MultiblockChemicalTankBuilder.GAS.input(this, () -> 10000L, gas -> true, this.createSaveAndComparator(recipeCacheLookupMonitor)));
+        this.gasTanks.add(leftTank = MultiblockChemicalTankBuilder.GAS.input(this, () -> 10000L, this::containsRecipe, recipeCacheLookupMonitor));
+        this.gasTanks.add(rightTank = MultiblockChemicalTankBuilder.GAS.input(this, () -> 10000L, this::containsRecipe, recipeCacheLookupMonitor));
         this.gasTanks.add(outputTank = MultiblockChemicalTankBuilder.GAS.output(this, () -> 10000L, gas -> true, this));
         this.leftTanks.add(leftTank);
         this.rightTanks.add(rightTank);
@@ -110,11 +110,16 @@ public class AdvancedFusionMultiblockData extends MultiblockData implements IVal
     }
 
     public BooleanSupplier getWarningCheck(CachedRecipe.OperationTracker.RecipeError error) {
-        int errorIndex = this.TRACKED_ERROR_TYPES.indexOf(error);
+        int errorIndex = TRACKED_ERROR_TYPES.indexOf(error);
         return errorIndex == -1 ? () -> false : () -> this.trackedErrors[errorIndex];
     }
 
     public boolean isActive() {
         return isActive;
+    }
+
+    @Override
+    public Level getHandlerWorld() {
+        return this.getWorld();
     }
 }

@@ -31,7 +31,6 @@ public abstract class MESAbstractInputRecipeCache<R extends MekanismRecipe> impl
     protected void initCacheIfNeeded(@Nullable Level world) {
         if (!initialized) {
             initialized = true;
-            LogUtils.getLogger().info("{}", recipeType.getRecipes(world));
             initCache(recipeType.getRecipes(world));
         }
     }

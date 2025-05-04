@@ -42,7 +42,7 @@ public class AttributeStateAdvancedFusionPortMode implements AttributeState {
 
     public static enum AdvancedFusionPortMode implements IIncrementalEnum<AdvancedFusionPortMode>, StringRepresentable, IHasTextComponent {
         INPUT_LEFT(MESLang.ADVANCED_FUSION_MODE_INPUT_LEFT, EnumColor.RED),
-        INPUT_RIGHT(MESLang.ADVANCED_FUSION_MODE_INPUT_RIGHT, EnumColor.AQUA),
+        INPUT_RIGHT(MESLang.ADVANCED_FUSION_MODE_INPUT_RIGHT, EnumColor.ORANGE),
         OUTPUT(MESLang.ADVANCED_FUSION_MODE_OUTPUT, EnumColor.DARK_BLUE);
 
         final ILangEntry lang;

@@ -1,0 +1,12 @@
+{
+    "parent": "mekanism:block/machine",
+    "textures": {
+        "sides": "mes:block/neutron_condenser_side",
+        "front": "mes:block/plasma_cooler_front",
+        "west": "mes:block/neutron_condenser_side",
+        "east": "mes:block/neutron_condenser_side",
+        "south": "mes:block/neutron_condenser_back",
+        "up": "mes:block/neutron_condenser_top",
+        "down": "mekanism:block/bottom"
+    }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mes:block/plasma_cooler"
+    },
+    "facing=south": {
+      "model": "mes:block/plasma_cooler",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "mes:block/plasma_cooler",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "mes:block/plasma_cooler",
+      "y": -90
+    }
+  }
+}

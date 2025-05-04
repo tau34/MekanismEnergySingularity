@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkAccess;
 
 import java.util.Map;
+import java.util.UUID;
 
 public class AdvancedFusionValidator implements IStructureValidator<AdvancedFusionMultiblockData> {
     public static final byte[][][] STRUCTURE = {
@@ -202,6 +203,18 @@ public class AdvancedFusionValidator implements IStructureValidator<AdvancedFusi
                     }) {
                         return FormationProtocol.FormationResult.FAIL;
                     } else {
+                        IMultiblockBase tile = this.structure.getTile(offset);
+                        if (tile instanceof IMultiblock<?> multiblock) {
+                            UUID uuid = multiblock.getCacheID();
+                            if (uuid != null && multiblock.getManager() == this.manager) {
+                                MultiblockCache<AdvancedFusionMultiblockData> cache = this.manager.getCache(uuid);
+                                if (cache == null) {
+                                    multiblock.resetCache();
+                                } else {
+                                    ctx.idsFound.put(uuid, cache);
+                                }
+                            }
+                        }
                         ctx.locations.add(offset);
                     }
                 }

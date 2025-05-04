@@ -1,5 +1,6 @@
 package io.github.tau34.mes.common.recipe.cache;
 
+import com.mojang.logging.LogUtils;
 import io.github.tau34.mes.common.recipe.MESRecipeType;
 import mekanism.api.functions.ConstantPredicates;
 import mekanism.api.recipes.MekanismRecipe;
@@ -64,7 +65,7 @@ public class MESSingleInputRecipeCache<I, IG extends InputIngredient<I>, R exten
 
     @Override
     protected void initCache(List<R> recipes) {
-        for(R recipe : recipes) {
+        for (R recipe : recipes) {
             if (this.cache.mapInputs(recipe, this.inputExtractor.apply(recipe))) {
                 this.complexRecipes.add(recipe);
             }

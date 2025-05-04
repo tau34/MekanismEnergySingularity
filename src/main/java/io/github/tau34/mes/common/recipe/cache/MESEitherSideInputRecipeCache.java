@@ -67,22 +67,19 @@ public class MESEitherSideInputRecipeCache<I, IG extends InputIngredient<I>, R e
             this.initCacheIfNeeded(world);
             Predicate<R> matchPredicate = (r) -> r.test(inputA, inputB);
             R recipe = this.cache.findFirstRecipe(inputA, matchPredicate);
-            return (R)(recipe == null ? this.findFirstRecipe(this.complexRecipes, matchPredicate) : recipe);
+            return recipe == null ? this.findFirstRecipe(this.complexRecipes, matchPredicate) : recipe;
         } else {
             return null;
         }
     }
 
     protected void initCache(List<R> recipes) {
-        LogUtils.getLogger().info("either side recipes: {}", recipes);
         for (R recipe : recipes) {
-            LogUtils.getLogger().info("either side recipe: {}", recipe);
             boolean complexA = this.cache.mapInputs(recipe, this.inputAExtractor.apply(recipe));
             boolean complexB = this.cache.mapInputs(recipe, this.inputBExtractor.apply(recipe));
             if (complexA || complexB) {
                 this.complexRecipes.add(recipe);
             }
         }
-
     }
 }

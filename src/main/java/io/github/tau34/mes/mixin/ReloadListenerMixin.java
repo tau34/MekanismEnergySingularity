@@ -1,5 +1,6 @@
 package io.github.tau34.mes.mixin;
 
+import com.mojang.logging.LogUtils;
 import io.github.tau34.mes.common.recipe.MESRecipeType;
 import mekanism.common.ReloadListener;
 import net.minecraft.server.packs.resources.ResourceManager;
