@@ -4,7 +4,7 @@ license="${mod_license}"
 
 [[mods]]
 modId="mes"
-version="0.1.0"
+version="0.1.1"
 displayName="Mekanism: Energy Singularity"
 authors="Tau34"
 
