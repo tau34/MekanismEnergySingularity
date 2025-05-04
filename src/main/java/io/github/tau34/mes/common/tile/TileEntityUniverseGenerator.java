@@ -182,7 +182,7 @@ public class TileEntityUniverseGenerator extends TileEntityConfigurableMachine i
     }
 
     private void recalculateEnergy() {
-        this.energyContainer.setMaxEnergy(FloatingLong.create(2.5E13D)
+        this.energyContainer.setMaxEnergy(FloatingLong.create(2.5E14D)
                 .multiply(density.getEnergyMult()).multiply(rare.getEnergyMult()).multiply(radius.getEnergyMult())
                 .multiply(gravity.getEnergyMult()).multiply(crust.getEnergyMult()));
     }
