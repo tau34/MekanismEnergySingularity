@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "mekanism_extras:alloy_thermonuclear"
+    },
+    "F": {
+      "item": "mekanismgenerators:fusion_reactor_frame"
+    },
+    "P": {
+      "item": "mes:neutronium_pellet"
+    }
+  },
+  "pattern": [
+    "AFA",
+    "FPF",
+    "AFA"
+  ],
+  "result": {
+    "count": 4,
+    "item": "mes:advanced_fusion_frame"
+  }
+}
